@@ -1,0 +1,32 @@
+{
+  "name": "uba-build",
+  "version": "0.0.1",
+  "description": "uba plugin for build",
+  "main": "index.js",
+  "bin": {
+    "uba-build": "./bin/uba-build.js"
+  },
+  "scripts": {
+    "test": "node test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iuap-design/uba-build.git"
+  },
+  "keywords": [
+    "uba",
+    "build"
+  ],
+  "author": "yueming@yonyou.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iuap-design/uba-build/issues"
+  },
+  "homepage": "https://github.com/iuap-design/uba-build#readme",
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "minimist": "^1.2.0",
+    "webpack": "^2.6.0",
+    "webpack-merge": "^4.1.0"
+  }
+}
