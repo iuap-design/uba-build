@@ -17,10 +17,17 @@ function getVersion() {
 }
 
 function build() {
+  console.log("Operation now, please wait");
   var webpackConfig = require("./webpack.base");
   webpack(webpackConfig, function(err, stats) {
     if(!err){
-      console.log("uba build success!");
+      console.log('\n' + stats.toString({
+          hash: false,
+          chunks: false,
+          children: false,
+          colors: true
+      }));
+      console.log("\n uba build success!");
     }else{
       console.log(err);
     }
