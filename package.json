@@ -1,6 +1,6 @@
 {
   "name": "uba-build",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "uba plugin for build",
   "main": "index.js",
   "bin": {
