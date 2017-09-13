@@ -17,6 +17,7 @@ function getVersion() {
 }
 
 function build() {
+  console.log(chalk.green(`[version]:${require("../package.json").version}`));
   console.log("[uba]: Operation now, please wait");
   var webpackConfig = require("./webpack.base");
   webpack(webpackConfig, function(err, stats) {
