@@ -1,52 +1,48 @@
-var chalk = require("chalk");
-var path = require("path");
+/* uba v3
+ * @Author: Kvkens(yueming@yonyou.com)
+ * @Date:   2018-01-10 18:58:38
+ * @Last Modified by:   Kvkens
+ * @Last Modified time: 2018-01-10 18:58:41
+ */
 
-var webpack = require("webpack");
+const util = require("./util");
+const chalk = require("chalk");
+const webpack = require("webpack");
+const webpackConfig = require("./pack");
 
-function getHelp() {
-  console.log(chalk.green(" Usage : "));
+
+/**
+ * dev server 主程序
+ */
+build = opt => {
   console.log();
-  console.log(chalk.green(" uba build"));
+  console.log(chalk.green(`********************************************`));
+  console.log(chalk.yellow(` ❤️  uba-build-server`));
+  console.log(chalk.green(` [uba build] : v${util.getPkg().version}`));
   console.log();
-  process.exit(0);
-}
+  console.log(chalk.green(` Good luck please wait`));
+  console.log(chalk.green(`********************************************`));
+  console.log();
 
-function getVersion() {
-  console.log(chalk.green(require("../package.json").version));
-  process.exit(0);
-}
-
-function build() {
-  console.log(chalk.green(`[version]:${require("../package.json").version}`));
-  console.log("[uba]: Operation now, please wait");
-  var webpackConfig = require("./webpack.base");
-  webpack(webpackConfig, function(err, stats) {
-    if(!err){
+  webpack(webpackConfig, function (err, stats) {
+    if (!err) {
       console.log('\n' + stats.toString({
-          hash: false,
-          chunks: false,
-          children: false,
-          colors: true
+        hash: false,
+        chunks: false,
+        children: false,
+        colors: true
       }));
-      console.log("\n[uba]: uba build success!");
-    }else{
-      console.log(err);
+    } else {
+      console.log(chalk.red(err));
     }
   });
 }
 
+
+//插件启动
 module.exports = {
-  plugin: function(options) {
-    commands = options.cmd;
-    pluginname = options.name;
-    if (options.argv.h || options.argv.help) {
-      getHelp();
-    }
-    if (options.argv.v || options.argv.version) {
-      getVersion();
-    }
-
-    build();
-
+  //主程序uba调用插件Context
+  plugin: (context) => {
+    build(context);
   }
 }

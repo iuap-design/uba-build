@@ -1,7 +1,7 @@
 {
   "name": "uba-build",
-  "version": "0.0.5",
-  "description": "uba plugin for build",
+  "version": "3.0.0-alpha.0",
+  "description": "build server plugin for uba",
   "main": "index.js",
   "bin": {
     "uba-build": "./bin/uba-build.js"
@@ -24,9 +24,12 @@
   },
   "homepage": "https://github.com/iuap-design/uba-build#readme",
   "dependencies": {
-    "chalk": "^2.1.0",
+    "chalk": "^2.3.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "html-webpack-plugin": "^2.30.1",
     "minimist": "^1.2.0",
-    "webpack": "^2.7.0",
-    "webpack-merge": "^4.1.0"
+    "uglifyjs-webpack-plugin": "^1.1.5",
+    "webpack": "^3.10.0",
+    "webpack-merge": "^4.1.1"
   }
 }
