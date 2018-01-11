@@ -5,9 +5,10 @@
  * @Last Modified time: 2018-01-10 18:58:41
  */
 
-const util = require("./util");
+
 const chalk = require("chalk");
 const webpack = require("webpack");
+const util = require("./util");
 const webpackConfig = require("./pack");
 
 
