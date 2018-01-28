@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/iuap-design/uba-build.git"
+    "url": "git+https://github.com/tinper-uba/uba-build.git"
   },
   "keywords": [
     "uba",
@@ -20,9 +20,9 @@
   "author": "yueming@yonyou.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/iuap-design/uba-build/issues"
+    "url": "https://github.com/tinper-uba/uba-build/issues"
   },
-  "homepage": "https://github.com/iuap-design/uba-build#readme",
+  "homepage": "https://github.com/tinper-uba/uba-build#readme",
   "dependencies": {
     "chalk": "^2.3.0",
     "minimist": "^1.2.0",
