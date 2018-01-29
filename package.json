@@ -1,6 +1,6 @@
 {
   "name": "uba-build",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "build server plugin for uba",
   "main": "index.js",
   "bin": {
@@ -26,6 +26,6 @@
   "dependencies": {
     "chalk": "^2.3.0",
     "minimist": "^1.2.0",
-    "webpack": "^3.10.0"
+    "webpack": "^2.7.0"
   }
 }
