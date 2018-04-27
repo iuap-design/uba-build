@@ -1,39 +1,32 @@
-/* uba-build
+/* uba build 2.0.0
  * @Author: Kvkens(yueming@yonyou.com)
- * @Date:   2017-5-15 00:00:00
+ * @Date:   2018-04-27 22:56:07
  * @Last Modified by:   Kvkens
- * @Last Modified time: 2018-01-29 21:51:33
+ * @Last Modified time: 2018-04-27 22:56:10
  */
 
-var chalk = require("chalk");
-var path = require("path");
-var webpack = require("webpack");
-var util = require("./util");
-var webpackConfig = util.getConfig().prodConfig;
+const chalk = require('chalk');
+const argv = require("minimist")(process.argv.slice(2));
+const commands = argv;
+const webpack = require('webpack');
+const util = require('./util');
+const webpackConfig = require('./build.config');
+const compiler = webpack(webpackConfig);
 
-function getHelp() {
-  console.log(chalk.green(" Usage : "));
-  console.log();
-  console.log(chalk.green(" uba build"));
-  console.log();
-  process.exit(0);
-}
 
-function getVersion() {
-  console.log(chalk.green(require("../package.json").version));
-  process.exit(0);
-}
-
-function build() {
+/**
+ * build 主程序
+ */
+build = () => {
   console.log();
   console.log(chalk.green(`********************************************`));
-  console.log(chalk.yellow(` ❤️  uba-build-server`));
-  console.log(chalk.green(` [core] : v${util.getPkg().version}`));
+  console.log(chalk.yellow(` ❤️  uba-build`));
+  console.log(chalk.green(` [uba build] : v${util.getPkg().version}`));
   console.log();
   console.log(chalk.green(` Good luck please wait`));
   console.log(chalk.green(`********************************************`));
   console.log();
-  webpack(webpackConfig, function (err, stats) {
+  compiler.run((err, stats) => {
     if (!err) {
       console.log('\n' + stats.toString({
         hash: false,
@@ -47,18 +40,10 @@ function build() {
   });
 }
 
+//插件启动
 module.exports = {
-  plugin: function (options) {
-    commands = options.cmd;
-    pluginname = options.name;
-    if (options.argv.h || options.argv.help) {
-      getHelp();
-    }
-    if (options.argv.v || options.argv.version) {
-      getVersion();
-    }
-
+  //主程序uba调用插件Context
+  plugin: (context) => {
     build();
-
   }
 }
