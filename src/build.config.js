@@ -5,6 +5,8 @@
 const path = require('path');
 const chalk = require('chalk');
 const glob = require('glob');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
@@ -18,6 +20,16 @@ const cfg = util.getUbaConfig()();
 const config = {
     devtool: cfg.devtool ? cfg.devtool : "source-map",
     mode: 'production',
+    optimization: {
+      minimizer: [
+        new UglifyJsPlugin({
+          cache: true,
+          parallel: true,
+          sourceMap: true // set to true if you want JS source maps
+        }),
+        new OptimizeCSSAssetsPlugin({})
+      ]
+    },
     output: cfg.output,
     externals: cfg.externals,
     resolve: cfg.resolve,
@@ -36,7 +48,19 @@ if (cfg.appType === 'single') {
   config['entry'] = cfg.entry;
   //设置一次HTML插件
   config['plugins'].push(new HtmlWebpackPlugin(Object.assign({
-    template: "./src/index.html"
+    template: "./src/index.html",
+    minify: {
+      removeComments: true,
+      collapseWhitespace: true,
+      removeRedundantAttributes: true,
+      useShortDoctype: true,
+      removeEmptyAttributes: true,
+      removeStyleLinkTypeAttributes: true,
+      keepClosingSlash: true,
+      minifyJS: true,
+      minifyCSS: true,
+      minifyURLs: true
+    }
   }, cfg.html)));
 } else if (cfg.appType === 'multi') { //多页模式
   let entries = {};
@@ -49,7 +73,19 @@ if (cfg.appType === 'single') {
       template: `./src/pages/${chunk}/index.html`,
       chunks: ['manifest', 'vendor', 'test', chunk],
       chunksSortMode: "manual",
-      filename: `${chunk}.html`
+      filename: `${chunk}.html`,
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true
+      }
     };
     config['plugins'].push(new HtmlWebpackPlugin(Object.assign(htmlConfig, cfg.html)));
   });
