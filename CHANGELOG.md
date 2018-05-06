@@ -1,5 +1,9 @@
 # CHANGELOG
 
+### version 2.0.0
+
+- 全新架构升级
+
 ### version 1.0.2
 
 - 增加取消查看进度条参数`--noProcess`。

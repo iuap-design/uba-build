@@ -71,7 +71,7 @@ if (cfg.appType === 'single') {
     entries[`${chunk}`] = path;
     let htmlConfig = {
       template: `./src/pages/${chunk}/index.html`,
-      chunks: ['manifest', 'vendor', 'test', chunk],
+      chunks: ['manifest', 'vendor', 'commons', chunk],
       chunksSortMode: "manual",
       filename: `${chunk}.html`,
       minify: {
