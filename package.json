@@ -1,6 +1,6 @@
 {
   "name": "uba-build",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "build server plugin for uba",
   "main": "index.js",
   "bin": {
