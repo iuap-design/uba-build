@@ -1,7 +1,15 @@
+/* uba-build
+ * @Author: Kvkens(yueming@yonyou.com)
+ * @Date:   2018-10-10 15:21:30
+ * @Last Modified by:   Kvkens
+ * @Last Modified time: 2018-10-10 15:21:33
+ */
+
 var chalk = require("chalk");
 var path = require("path");
-
 var webpack = require("webpack");
+var util = require("./util");
+var webpackConfig = util.getConfig().prodConfig;
 
 function getHelp() {
   console.log(chalk.green(" Usage : "));
@@ -17,26 +25,30 @@ function getVersion() {
 }
 
 function build() {
-  console.log(chalk.green(`[version]:${require("../package.json").version}`));
-  console.log("[uba]: Operation now, please wait");
-  var webpackConfig = require("./webpack.base");
-  webpack(webpackConfig, function(err, stats) {
-    if(!err){
+  console.log();
+  console.log(chalk.green(`********************************************`));
+  console.log(chalk.yellow(` ❤️  uba-build-server`));
+  console.log(chalk.green(` [core] : v${util.getPkg().version}`));
+  console.log();
+  console.log(chalk.green(` Good luck please wait`));
+  console.log(chalk.green(`********************************************`));
+  console.log();
+  webpack(webpackConfig, function (err, stats) {
+    if (!err) {
       console.log('\n' + stats.toString({
-          hash: false,
-          chunks: false,
-          children: false,
-          colors: true
+        hash: false,
+        chunks: false,
+        children: false,
+        colors: true
       }));
-      console.log("\n[uba]: uba build success!");
-    }else{
-      console.log(err);
+    } else {
+      console.log(chalk.red(err));
     }
   });
 }
 
 module.exports = {
-  plugin: function(options) {
+  plugin: function (options) {
     commands = options.cmd;
     pluginname = options.name;
     if (options.argv.h || options.argv.help) {
