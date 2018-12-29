@@ -27,3 +27,16 @@ $ npm install uba -g
 工具是依赖在开发框架内去使用的，具体参考开发框架里的`package.json`的启动脚本命令，配合`uba.config.js`文件使用
 
 
+## 参数
+
+下面是在配置script命令传入的参数如下：
+
+```bash
+  "scripts": {
+    "build": "uba build --noProcess"
+  }
+```
+
+名称 | 说明
+---|---
+noProcess | 不显示构建进度

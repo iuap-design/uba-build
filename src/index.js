@@ -2,15 +2,17 @@
  * @Author: Kvkens(yueming@yonyou.com)
  * @Date:   2017-5-15 00:00:00
  * @Last Modified by:   Kvkens
- * @Last Modified time: 2018-01-29 21:51:33
+ * @Last Modified time: 2018-12-29 10:57:08
  */
 
-var chalk = require("chalk");
-var path = require("path");
-var webpack = require("webpack");
-var util = require("./util");
-var webpackConfig = util.getConfig().prodConfig;
+const chalk = require("chalk");
+const webpack = require("webpack");
+const util = require("./util");
+const webpackConfig = util.getConfig().prodConfig;
 
+/**
+ * 获取帮助
+ */
 function getHelp() {
   console.log(chalk.green(" Usage : "));
   console.log();
@@ -19,15 +21,21 @@ function getHelp() {
   process.exit(0);
 }
 
+/**
+ * 获取version
+ */
 function getVersion() {
   console.log(chalk.green(require("../package.json").version));
   process.exit(0);
 }
 
+/**
+ * 构建资源处理
+ */
 function build() {
   console.log();
   console.log(chalk.green(`********************************************`));
-  console.log(chalk.yellow(` ❤️  uba-build-server`));
+  console.log(chalk.yellow(` ❤️  uba-build`));
   console.log(chalk.green(` [core] : v${util.getPkg().version}`));
   console.log();
   console.log(chalk.green(` Good luck please wait`));

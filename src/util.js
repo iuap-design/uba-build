@@ -2,17 +2,20 @@
  * @Author: Kvkens(yueming@yonyou.com)
  * @Date:   2017-5-15 00:00:00
  * @Last Modified by:   Kvkens
- * @Last Modified time: 2018-04-19 20:14:03
+ * @Last Modified time: 2018-12-29 10:58:41
  */
 
-var path = require("path");
-var chalk = require("chalk");
-var webpack = require("webpack");
-var argv = require("minimist")(process.argv.slice(2));
-var commands = argv;
+const path = require("path");
+const chalk = require("chalk");
+const webpack = require("webpack");
+const argv = require("minimist")(process.argv.slice(2));
+const commands = argv;
 
+/**
+ * 获取uba客户端配置
+ */
 exports.getConfig = function () {
-  var ubaConfig;
+  let ubaConfig;
   try {
     ubaConfig = require(path.resolve(".", "uba.config.js"));
     !commands.noProcess && ubaConfig.prodConfig.plugins.push(new webpack.ProgressPlugin());
