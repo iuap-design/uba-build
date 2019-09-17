@@ -1,5 +1,9 @@
 # CHANGELOG
 
+### version 2.1.1
+
+- 锁定包版本
+
 ### version 2.1.0
 
 - 调整部分代码逻辑
